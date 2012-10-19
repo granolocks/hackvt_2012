@@ -9,8 +9,16 @@ module HackVt
      # Namespace Library
      register Sinatra::Namespace
 
+     # We are going to return json(for (almost) everything.
+     before do
+
+       # Set the content type
+       content_type "application/json"
+
+     end
+
     get '/' do
-      "<h1>It Works</h1>"
+      { :it => "works" }.to_json
     end
   end
 end
