@@ -17,8 +17,12 @@ module Wintermute
 
      end
 
-    get '/' do
-      { :it => "works" }.to_json
-    end
+     namespace "/api" do
+       namespace "/v1" do
+         get '/?' do
+           { :it => "works" }.to_json
+         end
+       end
+     end
   end
 end
