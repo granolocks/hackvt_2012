@@ -9,8 +9,8 @@ class Activity
   property :website,      String
 
   property :address,      String
-  property :latitude,     String, required: true
-  property :longitude,    String, required: true
+  property :latitude,     String
+  property :longitude,    String
 
   has 1, :activity_type
 end
