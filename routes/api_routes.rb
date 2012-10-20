@@ -41,7 +41,7 @@ class Wintermute < Sinatra::Base
       namespace '/activity' do
 
         # Mark activity as unwanted
-        get_or_put '/reject/:activity_id/?' do
+        post '/reject/:activity_id/?' do
           #login_required
           current_user = User.get(1)
 
@@ -53,7 +53,7 @@ class Wintermute < Sinatra::Base
 
         # Mark activity as complete
         # Increment inventory
-        get_or_put '/complete/:activity_id/?' do
+        post '/complete/:activity_id/?' do
           #login_required
           current_user = User.get(1)
 
