@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # Run pry with all the code loaded
-pry -I "./" -r "wintermute-api"
+pry -I "./" -r "lib/wintermute"
 

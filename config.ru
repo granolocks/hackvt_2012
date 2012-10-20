@@ -1,5 +1,6 @@
-$:.unshift File.dirname(File.expand_path(File.join(__FILE__,".")))
-require 'thin'
-require 'wintermute-api' # Loads the app(s)
+$:.push(File.dirname(__FILE__))
 
-run Wintermute::Api.new
+require 'lib/wintermute'
+
+run Wintermute
+
