@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-require 'scrypt'
-
 class Stop
   include DataMapper::Resource
 
