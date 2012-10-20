@@ -72,8 +72,8 @@ class User
 
   def new_suggestions
     unless current_stop.solutions.empty?
-      item_types = current_stop.solutions.required_item_type
-      activities = ActivityType.all(reward_type: item_types).activities.all(:id.not => suggested_activities.unavailable.map(&:id)).all(limit: 6)
+      item_types = current_stop.solutions.map(&:required_item_type_id)
+      activities = ActivityType.all(reward_type_id: item_types).activities.all(:id.not => (suggested_activities.not_interested | suggested_activities.complete)).all(limit: 6)
     end
   end
 

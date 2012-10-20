@@ -40,9 +40,5 @@ class SuggestedActivity
   def self.suggestions
     all(suggested_at_stop: user.current_stop).uncomplete.interested
   end
-
-  def self.unavailable
-    not_interested | complete
-  end
 end
 
