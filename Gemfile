@@ -4,6 +4,10 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'thin'
 
+gem "data_mapper"
+gem "dm-mysql-adapter"
+gem "sanitize"
+
 group :development do
   gem 'rspec'
   gem 'pry'
