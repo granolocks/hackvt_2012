@@ -1,4 +1,11 @@
+# mainly for testing purposes
+def get_or_put(path, opts={}, &block)
+    get(path, opts, &block)
+    put(path, opts, &block)
+end
+
 class Wintermute < Sinatra::Base
+
 
   namespace "/api" do
 
@@ -18,7 +25,7 @@ class Wintermute < Sinatra::Base
 
       # Tell the backend user has consumed an inventory item to advance
       # Returns updated game state model
-      put '/inventory/:inventory_type/?' do
+      get_or_put '/inventory/:inventory_type/?' do
         login_required
 
         current_user.complete_stop!(:inventory_type)
@@ -33,7 +40,7 @@ class Wintermute < Sinatra::Base
       namespace '/activity' do
 
         # Mark activity as unwanted
-        put '/reject/:activity_id/?' do
+        get_or_put '/reject/:activity_id/?' do
           login_required
 
           current_user.reject_activity(params[:activity_id])
@@ -44,7 +51,7 @@ class Wintermute < Sinatra::Base
 
         # Mark activity as complete
         # Increment inventory
-        put '/complete/:id/?' do
+        get_or_put '/complete/:id/?' do
           login_required
 
           # complete the activity
@@ -65,6 +72,7 @@ class Wintermute < Sinatra::Base
           activities: current_user.suggestions.map(&:attributes)
         }
       end
+
     end
   end
 end
