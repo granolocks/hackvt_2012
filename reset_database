@@ -5,6 +5,8 @@ $:.push("./")
 require "lib/wintermute"
 require "json"
 
+logger = DataMapper::Logger.new($stdout, :debug)
+
 require "config/seed"
 
 DataMapper.auto_migrate!
