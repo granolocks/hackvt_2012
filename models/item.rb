@@ -4,7 +4,7 @@ class Item
   include DataMapper::Resource
 
   property :id,   Serial
-  property :name, String, required: true
+  property :name, String, required: true, length: 255
 
   belongs_to :item_type
 

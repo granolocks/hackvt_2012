@@ -95,7 +95,8 @@ class User
 
   property :id,             Serial
   property :username,       String,   :required => true,
-                                      :unique => true
+                                      :unique => true,
+                                      :length => 255
   property :pass_hash,      String,   :required => true,
                                       :length => 64,
                                       :accessor => :protected

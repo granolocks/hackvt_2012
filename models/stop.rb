@@ -4,7 +4,7 @@ class Stop
   include DataMapper::Resource
 
   property :id,           Serial
-  property :name,         String,   required: true, unique: true
+  property :name,         String,   required: true, unique: true, length: 255
   property :description,  Text,     required: true
   property :x,            Integer,  required: true
   property :y,            Integer,  required: true
