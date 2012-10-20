@@ -61,7 +61,7 @@ class Wintermute < Sinatra::Base
           current_user.complete_activity(params[:activity_id])
 
           # Return Game State
-          JSON.pretty_geneerate(game_state)
+          JSON.pretty_generate(game_state)
         end
 
       end
