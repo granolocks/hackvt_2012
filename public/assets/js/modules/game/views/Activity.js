@@ -12,6 +12,10 @@ var ActivityView = Backbone.View.extend({
 
     	$(this.el).html(ich.Activity(this.model.toJSON()));
 
+        if(this.model.get('website') == null) {
+            $(this.el).find('.website').remove();
+        }
+
         return this;
     },
 });	

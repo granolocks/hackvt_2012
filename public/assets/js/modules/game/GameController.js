@@ -3,10 +3,14 @@ var GameController = Backbone.View.extend({
 	initialize: function () {
 		console.log('GameController - initialize()');
 
-		_.bindAll(this, 'loadStub');
+		_.bindAll(this, 'loadStub', 'loadGameView', 'loadModels');
 
 		this.game = new Game();
-        this.game.fetch({success: this.loadGameView, error: this.loadStub });
+        this.game.fetch({success: this.loadModels });
+    },
+
+    events: {
+        //"click .save-options"       : "updateQuiz",
     },
 
     render: function() {
@@ -22,11 +26,21 @@ var GameController = Backbone.View.extend({
     	this.loadGameView();
     },
 
+    loadModels: function () {
+        console.log('GameController - loadModels()');
+
+        console.log(this.game.toJSON());
+
+        this.game.loadModels();
+
+        this.loadGameView();
+    },
+
     loadGameView: function() {
         console.log('GameController - loadGameView()');
         this.stop = this.game.get('stop');
         solutions = this.game.get("solutions");
-        this.solution1 = solutions.at(0);
+        this.solution1 = solutions.at(0)
         this.solution2 = solutions.at(1);
         this.inventoryItems = this.game.get('inventoryItems');
         this.activities = this.game.get('activities');

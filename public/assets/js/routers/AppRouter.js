@@ -7,6 +7,6 @@ var AppRouter = Backbone.Router.extend({
     game: function() {
     	console.log('AppRouter - game()');
 		
-		this.controller = new GameController();  
+		this.controller = new GameController();
     },
 });
