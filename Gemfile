@@ -6,7 +6,7 @@ gem 'thin'
 
 gem "data_mapper"
 gem "dm-mysql-adapter"
-gem "sanitize"
+gem "scrypt"
 
 group :development do
   gem 'rspec'

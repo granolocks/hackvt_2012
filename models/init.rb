@@ -13,6 +13,7 @@ db_site_string = "#{db_config['adapter']}://#{db_config['username']}:#{db_config
 DataMapper.setup(:default, db_site_string)
 
 # Require Models here
+require "models/user"
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
