@@ -28,6 +28,32 @@ class Wintermute
     redirect "/"
   end
 
+  get "/register/?" do
+    if logged_in?
+      redirect "/"
+      pass
+    end
+
+    erb :"auth/register"
+  end
+
+  post "/register/?" do
+    if logged_in?
+      redirect "/"
+      pass
+    end
+
+    @user = User.new(params[:register])
+    if @user.save
+      session[:user] = @user.id
+      session[:ip] = request.ip
+
+      redirect_to_stored
+    else
+      erb :"auth/register"
+    end
+  end
+
   helpers do
     def current_user
       User.get(session[:user])

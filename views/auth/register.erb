@@ -1,0 +1,23 @@
+
+<% if @user && !@user.errors.empty? %>
+  <ul>
+    <% @user.errors.each do |e| %>
+      <li><%= e.join %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div id="registerbox">
+  <form action="/register" method="post">
+    <label for="register[username]">Username</label>
+    <input type="text" name="register[username]" id="register_username" <%= "value='#{@user.username}'" if @user %> />
+
+    <label for="register[password]">Password</label>
+    <input type="password" name="register[password]" id="register_password" />
+
+    <label for="register[password_confirmation]">Password Confirmation</a>
+    <input type="password" name="register[password_confirmation" id="register_password_confirmation" />
+
+    <input type="submit" value="Login" />
+  </form>
+</div>
+
