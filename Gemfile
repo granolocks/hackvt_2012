@@ -7,6 +7,7 @@ gem 'thin'
 gem "data_mapper"
 gem "dm-mysql-adapter"
 gem "scrypt"
+gem "geocoder"
 
 group :development do
   gem 'rspec'
