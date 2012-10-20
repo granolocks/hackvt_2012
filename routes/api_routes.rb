@@ -1,7 +1,7 @@
 # mainly for testing purposes
-def get_or_put(path, opts={}, &block)
+def get_or_post(path, opts={}, &block)
     get(path, opts, &block)
-    put(path, opts, &block)
+    post(path, opts, &block)
 end
 
 class Wintermute < Sinatra::Base
@@ -25,7 +25,7 @@ class Wintermute < Sinatra::Base
 
       # Tell the backend user has consumed an inventory item to advance
       # Returns updated game state model
-      get '/inventory/:inventory_type/?' do
+      get_or_post '/inventory/:inventory_type/?' do
         #login_required
         current_user = User.get(1)
 
@@ -41,7 +41,7 @@ class Wintermute < Sinatra::Base
       namespace '/activity' do
 
         # Mark activity as unwanted
-        post '/reject/:activity_id/?' do
+        get_or_post '/reject/:activity_id/?' do
           #login_required
           current_user = User.get(1)
 
@@ -53,7 +53,7 @@ class Wintermute < Sinatra::Base
 
         # Mark activity as complete
         # Increment inventory
-        post '/complete/:activity_id/?' do
+        get_or_post '/complete/:activity_id/?' do
           #login_required
           current_user = User.get(1)
 
