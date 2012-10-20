@@ -280,9 +280,19 @@ solutions =[
     required_item_type_id: 4
   }
 ]
+
+solutions.each do |s|
+  Solution.first_or_create({description: s[:description]}, s)
+end
 # This always needs to be after the stops have been added
 User.first_or_create({username: 'admin'}, {
   password: 'admin',
   password_confirmation: 'admin'
 })
 
+# This always needs to be after the stops have been added
+User.first_or_create({username: 'gabe'}, {
+  password: 'gabe',
+  password_confirmation: 'gabe',
+  current_stop_id: 1
+})
