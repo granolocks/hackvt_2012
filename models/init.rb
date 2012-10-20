@@ -21,6 +21,7 @@ require "models/item"
 require "models/inventory"
 require "models/activity_type"
 require "models/activity"
+require "models/suggested_activity"
 
 DataMapper.finalize
 DataMapper.auto_upgrade!

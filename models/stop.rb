@@ -13,5 +13,6 @@ class Stop
   has 1, :prev_stop, 'Stop', child_key: :next_stop_id, required: false
 
   has n, :solutions
+  has n, :suggested_activities, child_key: :suggested_at_stop_id
 end
 
