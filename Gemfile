@@ -13,5 +13,4 @@ group :development do
   gem 'pry-remote'
   gem 'pry-nav'
   gem 'rack-test'
-  gem 'thin'
 end
