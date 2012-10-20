@@ -5,7 +5,7 @@ require "dm-aggregates"
 require "dm-migrations"
 require "dm-validations"
 
-logger = DataMapper::Logger.new($stdout, :debug)
+logger = DataMapper::Logger.new($stdout, :warn)
 
 db_config = YAML.load(File.read("config/db_config.yml"))
 
