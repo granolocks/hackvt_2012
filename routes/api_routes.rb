@@ -45,7 +45,7 @@ class Wintermute < Sinatra::Base
           #login_required
           current_user = User.get(1)
 
-          current_user.reject_activity(params[:activity_id])
+          current_user.dislike_activity(params[:activity_id])
 
           # Return Game State
           game_state.to_json
