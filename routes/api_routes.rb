@@ -25,7 +25,7 @@ class Wintermute < Sinatra::Base
 
       # Tell the backend user has consumed an inventory item to advance
       # Returns updated game state model
-      get_or_put '/inventory/:inventory_type/?' do
+      post '/inventory/:inventory_type/?' do
         #login_required
         current_user = User.get(1)
 
