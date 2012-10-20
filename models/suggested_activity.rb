@@ -32,8 +32,8 @@ class SuggestedActivity
     all(not_interested: true)
   end
 
-  def self.suggestions
-    all(suggested_at_stop: user.current_stop).uncomplete.interested
+  def self.suggestions(stop_id)
+    all(limit: 6, suggested_at_stop_id: stop_id).interested.uncomplete
   end
 end
 

@@ -17,5 +17,5 @@ require 'helpers/init'
 require 'routes/init'
 require 'models/init'
 require 'config/geocoder'
-require 'config/seed'
+#require 'config/seed'
 
