@@ -13,6 +13,11 @@ class SuggestedActivity
   belongs_to :suggested_at_stop, 'Stop'
   belongs_to :activity
 
+  def initialize(*args)
+    super
+    suggested_at_stop = user.current_stop
+  end
+
   # Activities that have been completed
   def self.complete
     all(completed: true)
@@ -26,6 +31,10 @@ class SuggestedActivity
   # Activities that a user hasn't rejected yet
   def self.interested
     all(not_interested: false)
+  end
+
+  def self.not_interested
+    all(not_interested: true)
   end
 
   def self.suggestions
