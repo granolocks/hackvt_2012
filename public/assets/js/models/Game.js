@@ -1,5 +1,5 @@
 var Game = Backbone.Model.extend({
-	url: function() { return $app.base+'api/game'; },
+	url: function() { return $app.base+'game'; },
 
     loadStub: function() {
         console.log('Game Model - loadStub()');
