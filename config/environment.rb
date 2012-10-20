@@ -7,5 +7,6 @@ Wintermute::configure do |config|
 
   # TODO remove this
   config.protection = false
+  config.cross_origin = true
 end
 
