@@ -30,10 +30,23 @@ class User
     suggested_activities.suggestions.activities
   end
 
-  def complete_step!
-    current_stop = current_stop.next_stop
-    new_suggestions
-    save
+  def complete_stop!(item_type_name)
+    it = current_stop.solutions.all(required_item_type: item_type_name).first
+    possible_items = Item.all(item_type: it)
+
+    used_item = inventory.all(item: possible_items).first
+
+    if used_item
+      inventory(item: used_item).first.delete
+
+      current_stop = current_stop.next_stop
+      new_suggestions
+      save
+
+      true
+    else
+      false
+    end
   end
 
   def new_suggestions
@@ -41,10 +54,18 @@ class User
     #activities = ActivityType.all(reward_type: item_types).activities
   end
 
-  # Nicety to allow you to request a user's inventory which returns the items in
-  # it
   def inventory
     items
+  end
+
+  # Request counts of types of inventory items
+  def inventory_counts
+    type_counts = ItemType.all.inject({}) do |types, it|
+      types[it.name] = 0;
+      types
+    end
+
+    type_counts.merge(Hash[items.item_types.aggregate(:name, :name.count)])
   end
 
   ##### BEGIN AUTHENTICATION #####
@@ -61,7 +82,7 @@ class User
 
   # Password/Password Confirmation virtual attributes attr_accessor :password, :password_confirmation
   attr_accessor :password, :password_confirmation
-  validates_presence_of :password, :password_confirmation
+  #validates_presence_of :password, :password_confirmation
   validates_confirmation_of :password
 
   # Class methods

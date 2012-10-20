@@ -24,5 +24,5 @@ require "models/activity"
 require "models/suggested_activity"
 
 DataMapper.finalize
-#DataMapper.auto_upgrade!
+#DataMapper.auto_migrate!
 
