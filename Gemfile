@@ -2,7 +2,6 @@ source :rubygems
 
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'thin'
 
 gem "data_mapper"
 gem "dm-mysql-adapter"
@@ -14,4 +13,5 @@ group :development do
   gem 'pry-remote'
   gem 'pry-nav'
   gem 'rack-test'
+  gem 'thin'
 end
