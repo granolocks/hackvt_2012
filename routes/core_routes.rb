@@ -1,4 +1,3 @@
-
 class Wintermute
   error do
     # TODO
@@ -10,8 +9,12 @@ class Wintermute
     "Page Missing"
   end
 
-  get "/" do
-    "Homepage!"
+  get "/?" do
+
+   # TODO
+   # login_required
+
+    erb :index
   end
 end
 
