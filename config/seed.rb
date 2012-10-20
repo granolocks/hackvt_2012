@@ -29,56 +29,56 @@ end
 stops = [
   {
     name: "Massachusetts Border",
-    description: "You are crossing into the beautiful, virginal state of Vermont. Isn't that nice? ",
+    description: "You are crossing into the beautiful, virginal state of Vermont. Isn't that nice? You might want to find food first, or maybe shelter.. Weather looks nasty. ",
     x: 0,
     y: 23,
     next_stop_id: 2
   },
   {
     name: "Prospect Rock",
-    description: "You arrive at prospect rock. This shit is pretty damn wily.",
+    description: "You arrive at prospect rock. This shit is pretty damn wily. There is a tree crossing the trail.",
     x: 6,
     y: 23,
     next_stop_id: 3
   },
   {
     name: "Mad Tom Notch",
-    description: "You arrive at Mad Tom Notch. Maybe Mad Tom is around somewhere. Maybe not. Maybe.",
+    description: "You arrive at Mad Tom Notch. Maybe Mad Tom is around somewhere. Maybe not. Maybe. Actually it seems like Mad Tom is attacking you.",
     x: 12,
     y: 23,
     next_stop_id: 4
   },
   {
     name: "Litle Rock Pond",
-    description: "They call this spot 'Little Rock Pond', but that rock isn't so little. It's pretty big, and it's moving...",
+    description: "They call this spot 'Little Rock Pond', but that rock isn't so little. It's pretty big, and it's moving... It's a Giant!",
     x: 18,
     y: 23,
     next_stop_id: 5
   },
   {
     name: "Sunset Ledge",
-    description: "The Sun Rises as you reach Sunset Ledge. Rises backwards. That's odd.",
+    description: "The Sun Rises as you reach Sunset Ledge. Rises backwards. That's odd. You feel hungry but the weather has turned to shit.",
     x: 24,
     y: 23,
     next_stop_id: 6
   },
   {
     name: "Molly Starks Balcony",
-    description: "Molly Starks is stark naked on her balcony. She runs inside screaming as you approach.",
+    description: "Molly Starks is stark naked on her balcony. She runs inside screaming as you approach.Suddenly, Molly comes back out in a bathrobe with a firehose and sprays you down.",
     x: 30,
     y: 23,
     next_stop_id: 7
   },
   {
     name: "Camels Hump",
-    description: "You scramble up the rocky crag. On the summit you see humping camels, or, no, that's just the mountain.",
+    description: "You scramble up the rocky crag. On the summit you see humping camels, or, no, that's just the mountain. No, wait, it's camels. These camels are making you uncomfortable, too bad you don't have anything to defend yourself. Or do you?",
     x: 36,
     y: 23,
     next_stop_id: 8
   },
   {
     name: "Harringtons View",
-    description: "What madness is this? What did Harrington really see from here? You may never know.. You are feeling pretty queasy and seem to be going blind. Also your palms are getting a bit hairy. Awkward.",
+    description: "What madness is this? What did Harrington really see from here? You may never know.. You are feeling pretty queasy and seem to be going blind. Also your palms are getting a bit hairy. Awkward. Sounds like you need some alone time anyway. I'ts been a long trip so far.",
     x: 42,
     y: 23,
     next_stop_id: 9
@@ -92,7 +92,7 @@ stops = [
   },
   {
     name: "Sterling Pond",
-    description: "This pond is more beautiful than anything you have ever seen. Ever. Anywhere. Seriously. Just look at it.",
+    description: "This pond is more beautiful than anything you have ever seen. Ever. Anywhere. Seriously. Just look at it. Looks like a nice swimming pond. Maybe if you dig a trench out of the pond you can create a stream and then float down the other side of this mountain.. ",
     x: 55,
     y: 23,
     next_stop_id: 11
@@ -140,142 +140,142 @@ end
 
 solutions =[
   {
-    description: "You might want to find some food before you travel too far...",
+    description: "I want food!",
     stop_id: 1,
     required_item_type_id: 1
   },
   {
-    description: "Hmm, the weather doesn't look great either, maybe you'd better find shelter.",
+    description: "Shelter it is!",
     stop_id: 1,
     required_item_type_id: 5
   },
   {
-    description: "There seems to be a tree crossing the path... How could you ever clear it?",
+    description: "Clear the tree!",
     stop_id: 2,
     required_item_type_id: 3
   },
   {
-    description: "Some how you are still hungry...",
+    description: "Naw, I'll just eat.",
     stop_id: 2,
     required_item_type_id: 1
   },
   {
-    description: "Actually it seems like Mad Tom is attacking you!",
+    description: "Fight Mad Tom",
     stop_id: 3,
     required_item_type_id: 2
   },
   {
-    description: "Not to mention you got soaked in a rain squall.. Gotta get dry somehow.",
+    description: "Run and camp elsewhere!",
     stop_id: 3,
     required_item_type_id: 4
   },
   {
-    description: "You need to fight this Mountain Giant off!",
+    description: "I'ma fight da Giant!",
     stop_id: 4,
     required_item_type_id: 2
   },
   {
-    description: "Maybe if you just hid he'd forget you are even here... May as well get a good nights sleep",
+    description: "Naw, shelter for me.",
     stop_id: 4,
     required_item_type_id: 5
   },
   {
-    description: "How did you get so hungry again? Must. Find. Food.",
+    description: "Must. Find. Food.",
     stop_id: 5,
     required_item_type_id: 1
   },
   {
-    description: "On the other hand this strange weather is making you very sleep...",
+    description: "Must. Find. Shelter.",
     stop_id: 5,
     required_item_type_id: 5
   },
   {
-    description: "Molly comes back out in a bathrobe with a firehose and sprays you down.",
+    description: "Dry off!",
     stop_id: 6,
     required_item_type_id: 4
   },
   {
-    description: "It might work if you just tunneled under her house...",
+    description: "Tunnel away under the mt..",
     stop_id: 6,
     required_item_type_id: 5
   },
   {
-    description: "These camels are making you uncomfortable, too bad you don't have anything to defend yourself. Or do you?",
+    description: "Fight Camels",
     stop_id: 7,
     required_item_type_id: 2
   },
   {
-    description: "Maybe if you distracted them with a meal they'd leave you alone.",
+    description: "Feed Camels",
     stop_id: 7,
     required_item_type_id: 1
   },
   {
-    description: "Sounds like you need some alone time anyway. I'ts been a long trip so far.",
+    description: "Spend some 'Alone Time'",
     stop_id: 8,
     required_item_type_id: 5
   },
   {
-    description: "Wait.. no.. On the other hand it seems more pressing to not starve to death for a change.",
+    description: "Naw, I'm hungry",
     stop_id: 8,
     required_item_type_id: 1
   },
   {
-    description: "That cat looks pissed. Better find a club fast.",
+    description: "Fight the cat!",
     stop_id: 9,
     required_item_type_id: 2
   },
   {
-    description: "Maybe you can just toss a piece of steak into the forest and have him chase it. Maybe.",
+    description: "Bait Cat with Food",
     stop_id: 9,
     required_item_type_id: 1
   },
   {
-    description: "You can't help but take a swim can you. Better not catch a cold!",
+    description: "Take a swim",
     stop_id: 10,
     required_item_type_id: 4
   },
   {
-    description: "Maybe if you dig a trench out of the pond you can create a stream and then float down the other side of this mountain.. ",
+    description: "Divert Stream",
     stop_id: 10,
     required_item_type_id: 3
   },
   {
-    description: "Big storm. eh? Sure wouldn't hurt to stay dry!",
+    description: "Stay Dry",
     stop_id: 11,
     required_item_type_id: 7
   },
   {
-    description: "A little weather never scared you huh? Oops, looks like you are soaked now.",
+    description: "Get Dry",
     stop_id: 11,
     required_item_type_id: 4
   },
   {
-    description: "Time to dance with the devil.",
+    description: "Dance with the Devil",
     stop_id: 12,
     required_item_type_id: 2
   },
   {
-    description: "Time to sleep with the devil.",
+    description: "Sleep with the Devil",
     stop_id: 12,
     required_item_type_id: 5
   },
   {
-    description: "You must battle these ghosts. It is the only way.",
+    description: "Battle The Ghosts",
     stop_id: 13,
     required_item_type_id: 2
   },
   {
-    description: "Battle ghosts? Why not just tear down the camp? That will sooth their tormented spirits.",
+    description: "Demo the Camp",
     stop_id: 13,
     required_item_type_id: 3
   },
   {
-    description: "That star sure looks big. And dangerous. I bet your tent will protect you.",
+    description: "Hide in Tent",
     stop_id: 14,
     required_item_type_id: 5
   },
   {
-    description: "Tent's not a gonna cut it! Good thing *someone* reminded you to bring a towel...",
+    description: "Hide behind Towel",
     stop_id: 14,
     required_item_type_id: 4
   }
