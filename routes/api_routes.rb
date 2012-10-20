@@ -17,6 +17,7 @@ class Wintermute < Sinatra::Base
       # Return the Entire Game Model
       get '/game/?' do
         #login_required
+        current_user = User.get(1)
 
         game_state.to_json
       end
@@ -25,6 +26,7 @@ class Wintermute < Sinatra::Base
       # Returns updated game state model
       get_or_put '/inventory/:inventory_type/?' do
         #login_required
+        current_user = User.get(1)
 
         current_user.complete_stop!(:inventory_type)
 
@@ -40,6 +42,7 @@ class Wintermute < Sinatra::Base
         # Mark activity as unwanted
         get_or_put '/reject/:activity_id/?' do
           #login_required
+          current_user = User.get(1)
 
           current_user.reject_activity(params[:activity_id])
 
@@ -51,6 +54,7 @@ class Wintermute < Sinatra::Base
         # Increment inventory
         get_or_put '/complete/:id/?' do
           #login_required
+          current_user = User.get(1)
 
           # complete the activity
           current_user.complete_activity(params[:activity_id])
@@ -63,6 +67,7 @@ class Wintermute < Sinatra::Base
 
       private
       def game_state
+        current_user = User.get(1)
         {
           stop: current_user.current_stop.attributes,
           solutions: current_user.current_stop.solutions.map(&:attributes),
