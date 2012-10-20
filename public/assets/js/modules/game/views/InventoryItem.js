@@ -16,6 +16,19 @@ var InventoryItemView = Backbone.View.extend({
     selectItem: function() {
         console.log('InventoryItemView - selectItem()');
 
+        $that = this;
+
+        //$game = this.model.get('game');
+        $.ajax({
+          type: "POST",
+          url: $app.base+'inventory/'+$that.model.get('id'),
+          success: function() {
+            window.location = "/";
+          }
+        });
+
+        //$app.navigate('reload/'+this.model.get('item_type'), true);
+
         return true;
     },
 

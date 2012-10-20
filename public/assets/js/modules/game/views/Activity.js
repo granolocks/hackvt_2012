@@ -21,15 +21,16 @@ var ActivityView = Backbone.View.extend({
 
         this.model.set('complete', true);
 
-        $game = this.model.get('game');
+        //$game = this.model.get('game');
         $.ajax({
           type: "POST",
           url: $app.base+'activity/complete/'+this.model.get('id'),
           success: function() {
-            window.location="/";
-            return true;
+            window.location = "/";
           }
         });
+
+        //$app.navigate('reload/'+this.model.get('item_type'), true);
     },
 
     rejectActivity: function() {
@@ -40,10 +41,11 @@ var ActivityView = Backbone.View.extend({
           type: "POST",
           url: $app.base+'activity/reject/'+this.model.get('id'),
           success: function() {
-            app.navigate('', true);
-            return true;
+            window.location = "/";
           }
         });
+
+        //$app.navigate('reload', true);
 
         return true;
     },
