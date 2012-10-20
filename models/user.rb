@@ -5,6 +5,16 @@ require 'scrypt'
 class User
   include DataMapper::Resource
 
+  # Nicety to allow you to request a user's inventory which returns the items in
+  # it
+  def inventory
+    items
+  end
+
+  # You don't see these... their names aren't the best...
+  has n, :inventories
+  has n, :items, through: :inventories
+
   # Not required becuase the getter is overridden to default to the first step
   belongs_to :current_stop, 'Stop', required: false
 

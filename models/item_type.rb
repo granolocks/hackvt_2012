@@ -8,5 +8,6 @@ class ItemType
   property :icon, String
 
   has n, :solutions, child_key: :required_item_type_id
+  has n, :items
 end
 
