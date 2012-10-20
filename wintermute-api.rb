@@ -1,8 +1,12 @@
+$:.push("./")
+
 require 'rubygems'
 require 'sinatra/base'
 require 'sinatra/namespace'
 require 'sinatra/json'
 require 'json'
+
+require 'models/init'
 
 module Wintermute
   class Api < Sinatra::Base
