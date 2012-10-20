@@ -5,6 +5,15 @@ require 'scrypt'
 class User
   include DataMapper::Resource
 
+  # Not required becuase the getter is overridden to default to the first step
+  belongs_to :current_stop, 'Stop', required: false
+
+  def current_stop
+    attribute_get(:current_stop) || Stop.first
+  end
+
+  ##### BEGIN AUTHENTICATION #####
+
   property :id,             Serial
   property :username,       String,   :required => true,
                                       :unique => true
@@ -15,7 +24,7 @@ class User
                                       :length => 32,
                                       :accessor => :protected
 
-  # Password/Password Confirmation virtual attributes
+  # Password/Password Confirmation virtual attributes attr_accessor :password, :password_confirmation
   attr_accessor :password, :password_confirmation
   validates_presence_of :password, :password_confirmation
   validates_confirmation_of :password
