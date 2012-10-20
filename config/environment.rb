@@ -4,5 +4,6 @@ Wintermute::configure do |config|
   config.root     = File.expand_path(File.dirname(__FILE__) + "/..")
   config.run      = true
   config.sessions = true
+  config.protection = false
 end
 
