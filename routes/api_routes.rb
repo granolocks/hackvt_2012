@@ -10,6 +10,7 @@ class Wintermute < Sinatra::Base
     # We are going to return json for everything in this area.
     before do
       content_type "application/json"
+      response['Access-Control-Allow-Origin'] = "*"
     end
 
     namespace "/v1" do
