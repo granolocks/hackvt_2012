@@ -5,21 +5,46 @@ require 'scrypt'
 class User
   include DataMapper::Resource
 
-  # Nicety to allow you to request a user's inventory which returns the items in
-  # it
-  def inventory
-    items
-  end
-
   # You don't see these... their names aren't the best...
   has n, :inventories
   has n, :items, through: :inventories
 
+  has n, :suggested_activities
+  # The following relation is ALL activities that have ever been suggested
+  has n, :activities, through: :suggested_activities
+
   # Not required becuase the getter is overridden to default to the first step
   belongs_to :current_stop, 'Stop', required: false
 
+  # Returns the current stop or the first one if one hasn't been set
   def current_stop
     attribute_get(:current_stop) || Stop.first
+  end
+
+  # Activities the user has completed
+  def completed
+    suggested_activities.complete.activities
+  end
+
+  def suggestions
+    suggested_activities.suggestions.activities
+  end
+
+  def complete_step!
+    current_stop = current_stop.next_stop
+    new_suggestions
+    save
+  end
+
+  def new_suggestions
+    #item_types = current_stop.solutions.required_item_type
+    #activities = ActivityType.all(reward_type: item_types).activities
+  end
+
+  # Nicety to allow you to request a user's inventory which returns the items in
+  # it
+  def inventory
+    items
   end
 
   ##### BEGIN AUTHENTICATION #####
