@@ -16,6 +16,7 @@ activity_types = [
   { name: "hike", reward_type: ItemType.all(name: "weapon").first },
   { name: "farmers_market", reward_type: ItemType.all(name: "food").first },
   { name: "museum", reward_type: ItemType.all(name: "weapon").first },
+  { name: "restaurant", reward_type: ItemType.all(name: "food").first },
   { name: "historical_site", reward_type: ItemType.all(name: "tool").first },
   { name: "swimming_hole", reward_type: ItemType.all(name: "towel").first },
   { name: "ski_resort", reward_type: ItemType.all(name: "tent").first }
