@@ -8,7 +8,6 @@ gem "data_mapper"
 gem "dm-mysql-adapter"
 gem "scrypt"
 gem "geocoder"
-gem "koala"
 
 group :development do
   gem "rspec"
