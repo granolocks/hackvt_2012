@@ -12,6 +12,6 @@ class Activity
   property :latitude,     String
   property :longitude,    String
 
-  has 1, :activity_type
+  belongs_to :activity_type
 end
 
