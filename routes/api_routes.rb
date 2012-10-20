@@ -1,10 +1,12 @@
-
 class Wintermute < Sinatra::Base
+
   namespace "/api" do
-    # We are going to return json(for (almost) everything.
+
+    # We are going to return json for everything in this area.
     before do
       content_type "application/json"
     end
+
     namespace "/v1" do
 
       # Return the Entire Game Model
@@ -15,7 +17,10 @@ class Wintermute < Sinatra::Base
       # Tell the backend user has consumed an inventory item to advance
       # Returns updated game state model
       put '/inventory/?' do
-        # TODO
+
+        current_user.complete_stop!(params[:solution_id])
+
+        # Return Game State
         game_state.to_json
       end
 
@@ -25,17 +30,25 @@ class Wintermute < Sinatra::Base
       namepspace '/activity' do
 
         # Mark activity as unwanted
-        put '/reject/:id/?' do
-          # TODO mark activity as unwanted
+        put '/reject/:activity_id/?' do
+
+          current_user.reject_activity(params[:activity_id])
+
+          # Return Game State
           game_state.to_json
         end
 
         # Mark activity as complete
         # Increment inventory
         put '/complete/:id/?' do
-          #TODO mark activity as completed
+
+          # complete the activity
+          current_user.complete_activity(params[:activity_id])
+
+          # Return Game State
           game_state.to_json
         end
+
       end
 
       private
