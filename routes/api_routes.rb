@@ -53,7 +53,7 @@ class Wintermute < Sinatra::Base
 
         # Mark activity as complete
         # Increment inventory
-        get_or_put '/complete/:id/?' do
+        get_or_put '/complete/:activity_id/?' do
           #login_required
           current_user = User.get(1)
 

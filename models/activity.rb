@@ -21,5 +21,10 @@ class Activity
   def self.ungeocoded
     all(latitude: nil) | all(longitude: nil)
   end
+
+  def attributes
+    super.merge({item_type: self.activity_type.reward_type.name })
+  end
+
 end
 
