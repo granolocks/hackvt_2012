@@ -35,12 +35,20 @@ class User
     sa = suggested_activities.all(activity_id: activity_id).first
     sa.completed = true
     sa.save
+
+    self.items << Item.all(item_type: sa.activity.activity_type.reward_type).sample(1).first
+
+    new_suggestions
+    save
   end
 
   def dislike_activity(activity_id)
     sa = suggested_activities.all(activity_id: activity_id).first
     sa.not_interested = true
     sa.save
+
+    new_suggestions
+    save
   end
 
   def complete_stop!(item_type_name)
