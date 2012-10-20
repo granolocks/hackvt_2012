@@ -9,5 +9,6 @@ class ItemType
 
   has n, :solutions, child_key: :required_item_type_id
   has n, :items
+  has n, :activity_types, child_key: :reward_type_id
 end
 
