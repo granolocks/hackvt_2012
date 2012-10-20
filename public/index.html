@@ -36,14 +36,12 @@
         </div>
         <div class="container-fluid">
           <div class="row-fluid">
-            <div class="span1">
-            </div>
-            <div class="span5">
-              <div class="hero-unit" style="align: center">
+            <div class="span6">
+              <div class="hero-unit" style="text-align: center;">
                 <!-- MapView -->
               </div>
             </div>
-            <div class="span5 sidebar-container">
+            <div class="span6 sidebar-container">
                 <!-- SideBarWell -->
             </div>
           </div>
@@ -51,7 +49,7 @@
     </script>
 
     <script type="text/html" id="Map">
-        <img src="assets/img/vermont_map.png" />
+        <img src="assets/img/map{{ id }}.png" />
     </script>
 
     <script type="text/html" id="Navbar">
@@ -117,8 +115,10 @@
           <li class="nav-header ">
             Your Options
           </li>
-          <li>
-          </li>
+        </ul>
+        <ul class="nav nav-list">
+          <li>&nbsp;</li>
+          <li><em>Hint: Select an inventory item to proceed, or complete an activity to find more items!</em></li>
         </ul>
       </div>
     </div>
@@ -129,11 +129,9 @@
     </script>
 
     <script type="text/html" id="SidebarOption">
-    <li class="">
-      <div class="btn-group row-fluid" style="padding-bottom: 6px;">
-      <button class="btn btn-info span12">{{ description }}</button>
-      </div>
-    </li>
+    <li>&nbsp;</li>
+    <li class="">{{ description }}</li>
+    <li><strong>Use {{ item_type }}</strong>!</li>
     </script>
 
     <script type="text/html" id="Activities">
@@ -154,7 +152,7 @@
     <script type="text/html" id="Activity">
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#activities-accordion" href="#collapse{{id}}">
-          {{ name }}
+          Visit {{ name }}
         </a>
       </div>
       <div id="collapse{{id}}" class="accordion-body collapse">
@@ -163,8 +161,8 @@
           <p class="website"><strong>Website:</strong> {{ website }}</p>
           <p>{{ description }}</p>
           <div class="btn-group row-fluid">
-            <button class="btn btn-success span6">I&apos;ve completed this activity!</button>
-            <button class="btn btn-warning span6">I don&apos;t want to do this activity</button>
+            <button class="btn btn-success span6 complete-activity">I&apos;ve completed this activity!</button>
+            <button class="btn btn-warning span6 reject-activity">I don&apos;t want to do this activity</button>
           </div>
         </div>
       </div>
@@ -211,6 +209,21 @@
         Backbone.history.start();
     });
     </script>
-
+    <div class="navbar navbar-fixed-top navbar-inverse loading">
+      <div class="navbar-inner">
+        <!-- NavBarView -->
+      </div>
+    </div>
+    <div class="container-fluid loading">
+      <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span8">
+          <div class="hero-unit" style="text-align: center;">
+            Loading...
+          </div>
+        </div>
+        <div class="span2"></div>
+      </div>
+    </div>
   </body>
 </html>

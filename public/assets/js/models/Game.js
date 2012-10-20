@@ -58,14 +58,14 @@ var Game = Backbone.Model.extend({
         solution1 = new Solution();
         solutions_array = this.get('solutions');
         solution1.set('id', solutions_array[0]['id']);
-        solution1.set('required_item_type_id', solutions_array[0]['required_item_type_id']);
+        solution1.set('item_type', solutions_array[0]['required_item_type_id']);
         solution1.set('stop_id', solutions_array[0]['stop_id']);
         solution1.set('description', solutions_array[0]['description']);
         
         solution2 = new Solution();
         solutions_array = this.get('solutions');
         solution2.set('id', solutions_array[1]['id']);
-        solution2.set('required_item_type_id', solutions_array[1]['required_item_type_id']);
+        solution2.set('item_type', solutions_array[1]['required_item_type_id']);
         solution2.set('stop_id', solutions_array[1]['stop_id']);
         solution2.set('description', solutions_array[1]['description']);
 
@@ -98,8 +98,6 @@ var Game = Backbone.Model.extend({
         }
 
         this.set('activities', activitiesCollection);
-
-        console.log(this.toJSON());
     },
 
     initialize: function () {

@@ -3,14 +3,17 @@ var GameController = Backbone.View.extend({
 	initialize: function () {
 		console.log('GameController - initialize()');
 
-		_.bindAll(this, 'loadStub', 'loadGameView', 'loadModels');
+		_.bindAll(this, 'loadStub', 'loadGameView', 'loadModels', 'optionClick');
 
 		this.game = new Game();
         this.game.fetch({success: this.loadModels });
+
+        this.model = this.game;
+        this.model.bind('change', this.render, this);
     },
 
-    events: {
-        //"click .save-options"       : "updateQuiz",
+    optionClick: function() {
+        console.log('Option Click');
     },
 
     render: function() {
@@ -47,11 +50,12 @@ var GameController = Backbone.View.extend({
 
         this.gameView = new GameView({model: this.game}); //may not need game model here
         this.navbarView = new NavbarView({model: this.game});
-        this.mapView = new MapView({model: this.game});
+        this.mapView = new MapView({model: this.stop});
         this.sidebarStopView = new SidebarStopView({model: this.stop});
         this.sidebarSolutionView1 = new SidebarSolutionView({model: this.solution1})
         this.sidebarSolutionView2 = new SidebarSolutionView({model: this.solution2})
         
+        $('.loading').remove();
         $('body').prepend(this.gameView.render().el);
         $('.navbar-inner').html(this.navbarView.render().el);
         $('.hero-unit').html(this.mapView.render().el);
@@ -69,7 +73,9 @@ var GameController = Backbone.View.extend({
 
         $('.sidebar-container').append(ich.Activities());
         $('#activities-accordion').append()
+        $game = this.game;
         this.activities.each(function(activity) {
+            activity.set('game', $game);
             activityView = new ActivityView({model: activity});
             $('#activities-accordion').append(activityView.render().el);
         })
