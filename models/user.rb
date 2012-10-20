@@ -36,7 +36,7 @@ class User
     sa.completed = true
     sa.save
 
-    self.items << Item.all(item_type: sa.activity.activity_type.reward_type).sample(1).first
+    self.items << Item.all(item_type_id: sa.activity.activity_type.reward_type.id).sample(1).first
 
     save
   end
@@ -53,7 +53,7 @@ class User
     used_item = self.inventory.all(id: possible_items.map(&:id) ).first
 
     if used_item
-      self.inventories.all(item_id: used_item.id).first.destroy
+      self.inventories.all(item_id: used_item.id).first.delete
 
       self.current_stop = self.current_stop.next_stop
       new_suggestions
