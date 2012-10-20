@@ -68,10 +68,16 @@ class Wintermute < Sinatra::Base
 
       private
       def game_state
+
         current_user = User.get(1)
+        solutions = current_user.current_stop.solutions.map(&:attributes)
+        solutions = solutions.map do |s|
+          s[:required_item_type_id] = ItemType.get(s[:required_item_type_id]).name
+          s
+        end
         {
           stop: current_user.current_stop.attributes,
-          solutions: current_user.current_stop.solutions.map(&:attributes),
+          solutions: solutions,
           inventory: current_user.inventory_counts,
           activities: current_user.suggestions.map(&:attributes)
         }
