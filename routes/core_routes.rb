@@ -11,7 +11,7 @@ class Wintermute
   end
 
   get "/" do
-    "Homepage!"
+    erb :index
   end
 end
 
