@@ -4,11 +4,11 @@ class Activity
   include DataMapper::Resource
 
   property :id,           Serial
-  property :name,         String, required: true
+  property :name,         String, required: true, length: 255
   property :description,  Text
-  property :website,      String
+  property :website,      String, length: 255
 
-  property :address,      String
+  property :address,      String, length: 255
   property :latitude,     String
   property :longitude,    String
 

@@ -17,31 +17,24 @@ queue = []
 failed = []
 
 ati = ActivityType.all(name: "farmers_market").first.id
-puts ati
 queue += (farmers_markets.map { |fm| fm.merge({activity_type_id: ati}) })
 
 ati = ActivityType.all(name: "hike").first.id
-puts ati
 queue += (hikes.map { |h| h.merge({activity_type_id: ati}) })
 
 ati = ActivityType.all(name: "historical_site").first.id
-puts ati
 queue += (historical_sites.map { |hs| hs.merge({activity_type_id: ati}) })
 
 ati = ActivityType.all(name: "museum").first.id
-puts ati
 queue += (museums.map { |m| m.merge({activity_type_id: ati}) })
 
 ati = ActivityType.all(name: "restaurant").first.id
-puts ati
 queue += (restaurants.map { |r| r.merge({activity_type_id: ati}) })
 
 ati = ActivityType.all(name: "ski_resort").first.id
-puts ati
 queue += (ski_resorts.map { |s| s.merge({activity_type_id: ati}) })
 
 ati = ActivityType.all(name: "swimming_hole").first.id
-puts ati
 queue += (swimming_holes.map { |sh| sh.merge({activity_type_id: ati}) })
 
 queue.each do |a|
@@ -52,5 +45,7 @@ queue.each do |a|
   end
 end
 
-File.open('failed.json', 'w') { |f| f.write(JSON.pretty_generate(failed)) }
+unless failed.empty?
+  File.open('failed.json', 'w') { |f| f.write(JSON.pretty_generate(failed)) }
+end
 
