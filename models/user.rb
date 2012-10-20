@@ -28,7 +28,7 @@ class User
   end
 
   def suggestions
-    suggested_activities.suggestions.activities
+    suggested_activities.all(order: :id.desc).suggestions(current_stop_id).activities.all(limit: 6)
   end
 
   def complete_activity(activity_id)
@@ -38,7 +38,6 @@ class User
 
     self.items << Item.all(item_type: sa.activity.activity_type.reward_type).sample(1).first
 
-    new_suggestions
     save
   end
 
@@ -46,9 +45,6 @@ class User
     sa = suggested_activities.all(activity_id: activity_id).first
     sa.not_interested = true
     sa.save
-
-    new_suggestions
-    save
   end
 
   def complete_stop!(item_type_name)
@@ -73,7 +69,13 @@ class User
   def new_suggestions
     unless current_stop.solutions.empty?
       item_types = current_stop.solutions.map(&:required_item_type_id)
-      activities = ActivityType.all(reward_type_id: item_types).activities.all(:id.not => (suggested_activities.not_interested | suggested_activities.complete)).all(limit: 6)
+      activity_types = ActivityType.all(reward_type_id: item_types).map(&:id)
+      excluded_activities = (suggested_activities.not_interested | suggested_activities.complete).map(&:id)
+      acts = Activity.all(:activity_type_id => activity_types, :id.not => excluded_activities).sample(10)
+
+      acts.map do |a|
+        SuggestedActivity.create({user_id: self.id, activity_id: a.id, suggested_at_stop_id: current_stop.id})
+      end
     end
   end
 

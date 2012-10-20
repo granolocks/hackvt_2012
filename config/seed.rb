@@ -30,105 +30,105 @@ stops = [
   {
     name: "Massachusetts Border",
     description: "You are crossing into the beautiful, virginal state of Vermont. Isn't that nice? ",
-    x: 23,
+    x: 0,
     y: 23,
     next_stop_id: 2
   },
   {
     name: "Prospect Rock",
     description: "You arrive at prospect rock. This shit is pretty damn wily.",
-    x: 23,
+    x: 6,
     y: 23,
     next_stop_id: 3
   },
   {
     name: "Mad Tom Notch",
     description: "You arrive at Mad Tom Notch. Maybe Mad Tom is around somewhere. Maybe not. Maybe.",
-    x: 23,
+    x: 12,
     y: 23,
     next_stop_id: 4
   },
   {
     name: "Litle Rock Pond",
     description: "They call this spot 'Little Rock Pond', but that rock isn't so little. It's pretty big, and it's moving...",
-    x: 23,
+    x: 18,
     y: 23,
     next_stop_id: 5
   },
   {
     name: "Sunset Ledge",
     description: "The Sun Rises as you reach Sunset Ledge. Rises backwards. That's odd.",
-    x: 23,
+    x: 24,
     y: 23,
     next_stop_id: 6
   },
   {
     name: "Molly Starks Balcony",
     description: "Molly Starks is stark naked on her balcony. She runs inside screaming as you approach.",
-    x: 23,
+    x: 30,
     y: 23,
     next_stop_id: 7
   },
   {
     name: "Camels Hump",
     description: "You scramble up the rocky crag. On the summit you see humping camels, or, no, that's just the mountain.",
-    x: 23,
+    x: 36,
     y: 23,
     next_stop_id: 8
   },
   {
     name: "Harringtons View",
     description: "What madness is this? What did Harrington really see from here? You may never know.. You are feeling pretty queasy and seem to be going blind. Also your palms are getting a bit hairy. Awkward.",
-    x: 23,
+    x: 42,
     y: 23,
     next_stop_id: 9
   },
   {
     name: "Mt. Mansfield",
     description: "They call it Mansfield but you don't seen any men around. Or any fields. Just trees and rocks. And that huge Catamount. Uh-oh.",
-    x: 23,
+    x: 48,
     y: 23,
     next_stop_id: 10
   },
   {
     name: "Sterling Pond",
     description: "This pond is more beautiful than anything you have ever seen. Ever. Anywhere. Seriously. Just look at it.",
-    x: 23,
+    x: 55,
     y: 23,
     next_stop_id: 11
   },
   {
     name: "Madonna Peak",
     description: "A big storm is brewing as you summit Madonna Peak. Your mother must be rolling in her grave. You didn't even bring a rain jacket.",
-    x: 23,
+    x: 66,
     y: 23,
     next_stop_id: 12
   },
   {
     name: "Devils Gulch",
     description: "Out of the storm and down into hell you descend. Actually it's quite nice down here, quite peaceful. But who is that fellow in the shadows? The one with the horns and the cleft feet.",
-    x: 23,
+    x: 75,
     y: 23,
     next_stop_id: 13
   },
   {
     name: "Hazens Notch Camp",
     description: "Finally reached a real Camp. First time on this whole trek it seems. Too bad the camp is a haunted, dilapidated mess. A shiver runs up your spine.",
-    x: 23,
+    x: 84,
     y: 23,
     next_stop_id: 14
   },
   {
     name: "Shooting Star Shelter",
     description: "Another shelter? Seriously? Two in a row? That star up there sure is bright... Sure is moving quickly. Towards you.",
-    x: 23,
+    x: 90,
     y: 23,
     next_stop_id: 15
   },
   {
     name: "The Canadian Border",
     description: "You did it. You won. Whatever that means. Welcome to Canada, commie.",
-    x: 23,
+    x: 100,
     y: 23,
     next_stop_id: nil
   },
