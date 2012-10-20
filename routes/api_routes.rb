@@ -20,7 +20,7 @@ class Wintermute < Sinatra::Base
         #login_required
         current_user = User.get(1)
 
-        game_state.to_json
+        JSON.pretty_generate(game_state)
       end
 
       # Tell the backend user has consumed an inventory item to advance
@@ -29,10 +29,10 @@ class Wintermute < Sinatra::Base
         #login_required
         current_user = User.get(1)
 
-        current_user.complete_stop!(:inventory_type)
+        current_user.complete_stop!(params[:inventory_type])
 
         # Return Game State
-        game_state.to_json
+        JSON.pretty_generate(game_state)
       end
 
       # Tell the backend that the user has taken an action on the given acitvity
@@ -48,7 +48,7 @@ class Wintermute < Sinatra::Base
           current_user.dislike_activity(params[:activity_id])
 
           # Return Game State
-          game_state.to_json
+          JSON.pretty_generate(game_state)
         end
 
         # Mark activity as complete
@@ -61,7 +61,7 @@ class Wintermute < Sinatra::Base
           current_user.complete_activity(params[:activity_id])
 
           # Return Game State
-          game_state.to_json
+          JSON.pretty_geneerate(game_state)
         end
 
       end

@@ -48,15 +48,14 @@ class User
   end
 
   def complete_stop!(item_type_name)
-    it = current_stop.solutions.all(required_item_type: item_type_name).first
-    possible_items = Item.all(item_type: it)
-
-    used_item = inventory.all(item: possible_items).first
+    it = self.current_stop.solutions.all(required_item_type: ItemType.all(name: item_type_name)).first
+    possible_items = Item.all(item_type: it.required_item_type)
+    used_item = self.inventory.all(id: possible_items.map(&:id) ).first
 
     if used_item
-      inventory(item: used_item).first.delete
+      self.inventories.all(item_id: used_item.id).first.destroy
 
-      current_stop = current_stop.next_stop
+      self.current_stop = self.current_stop.next_stop
       new_suggestions
       save
 
