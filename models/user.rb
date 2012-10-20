@@ -28,7 +28,7 @@ class User
   end
 
   def suggestions
-    suggested_activities.suggestions(current_stop_id).activities.all(limit: 6)
+    suggested_activities.all(order: :id.desc).suggestions(current_stop_id).activities.all(limit: 6)
   end
 
   def complete_activity(activity_id)
