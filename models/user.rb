@@ -36,7 +36,7 @@ class User
     sa.completed = true
     sa.save
 
-    self.items << Item.all(item_type_id: sa.activity.activity_type.reward_type.id).sample(1).first
+    self.items << Item.all(item_type: sa.activity.activity_type.reward_type).sample(1).first
 
     save
   end
