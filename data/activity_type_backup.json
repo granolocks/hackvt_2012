@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "hike",
+    "reward_type_id": 2
+  },
+  {
+    "id": 2,
+    "name": "farmers_market",
+    "reward_type_id": 1
+  },
+  {
+    "id": 3,
+    "name": "museum",
+    "reward_type_id": 2
+  },
+  {
+    "id": 4,
+    "name": "restaurant",
+    "reward_type_id": 1
+  },
+  {
+    "id": 5,
+    "name": "historical_site",
+    "reward_type_id": 3
+  },
+  {
+    "id": 6,
+    "name": "swimming_hole",
+    "reward_type_id": 4
+  },
+  {
+    "id": 7,
+    "name": "ski_resort",
+    "reward_type_id": 5
+  }
+]
