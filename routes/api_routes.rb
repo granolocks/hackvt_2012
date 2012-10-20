@@ -69,7 +69,7 @@ class Wintermute < Sinatra::Base
           stop: current_user.current_stop.attributes,
           solutions: current_user.current_stop.solutions.map(&:attributes),
           inventory: current_user.inventory_counts,
-          activities: current_user.suggestions
+          activities: current_user.suggestions.map(&:attributes)
         }
       end
 
