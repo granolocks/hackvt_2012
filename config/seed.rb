@@ -8,7 +8,8 @@ item_types = [
 ]
 
 item_types.each do |it|
-  ItemType.first_or_create({name: it[:name]}, it)
+  it = ItemType.first_or_create({name: it[:name]}, it)
+  i = Item.first_or_create({name: it[:name]}, {item_type: it})
 end
 
 activity_types = [
