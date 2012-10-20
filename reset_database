@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+$:.push("./")
+
+require "lib/wintermute"
+require "json"
+
+require "config/seed"
+
+DataMapper.auto_migrate!
+
+activities = JSON.parse(File.read('data/activity_backup.json'))
+
+Activity.all.each do |a|
+  a.destroy
+end
+
+activities.sort { |a, b| a["id"] <=> b["id"] }.each do |a|
+  a.delete("id")
+  Activity.create(a)
+end
+
+u = User.get(1)
+u.new_suggestions
+u.save
+
+
