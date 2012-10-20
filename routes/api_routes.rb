@@ -5,8 +5,6 @@ def get_or_put(path, opts={}, &block)
 end
 
 class Wintermute < Sinatra::Base
-
-
   namespace "/api" do
 
     # We are going to return json for everything in this area.
@@ -18,7 +16,7 @@ class Wintermute < Sinatra::Base
 
       # Return the Entire Game Model
       get '/game/?' do
-        login_required
+        #login_required
 
         game_state.to_json
       end
@@ -26,7 +24,7 @@ class Wintermute < Sinatra::Base
       # Tell the backend user has consumed an inventory item to advance
       # Returns updated game state model
       get_or_put '/inventory/:inventory_type/?' do
-        login_required
+        #login_required
 
         current_user.complete_stop!(:inventory_type)
 
@@ -41,7 +39,7 @@ class Wintermute < Sinatra::Base
 
         # Mark activity as unwanted
         get_or_put '/reject/:activity_id/?' do
-          login_required
+          #login_required
 
           current_user.reject_activity(params[:activity_id])
 
@@ -52,7 +50,7 @@ class Wintermute < Sinatra::Base
         # Mark activity as complete
         # Increment inventory
         get_or_put '/complete/:id/?' do
-          login_required
+          #login_required
 
           # complete the activity
           current_user.complete_activity(params[:activity_id])
