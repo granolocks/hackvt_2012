@@ -10,7 +10,13 @@ class Wintermute < Sinatra::Base
 
        namespace '/stops' do
           namespace '/:id' do
+             #TODO Make this happen
+             # @stop = Stop.get(params[:id])
+
              get '/?' do
+
+               # TODO
+               # @stop.response_body.to_json
                { :stop => {
                    :id => 2,
                    :name => "Prospect Rock",
@@ -37,6 +43,7 @@ class Wintermute < Sinatra::Base
              end
 
              get '/activities/?' do
+               # TODO Get these hashes based on the stop requirements
                {
                  :activities => [
                    {
