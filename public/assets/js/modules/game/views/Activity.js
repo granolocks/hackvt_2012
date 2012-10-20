@@ -40,7 +40,7 @@ var ActivityView = Backbone.View.extend({
           type: "POST",
           url: $app.base+'activity/reject/'+this.model.get('id'),
           success: function() {
-            window.location="/";
+            app.navigate('', true);
             return true;
           }
         });
