@@ -11,5 +11,7 @@ class Stop
 
   belongs_to :next_stop, 'Stop', required: false
   has 1, :prev_stop, 'Stop', child_key: :next_stop_id, required: false
+
+  has n, :solutions
 end
 

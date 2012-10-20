@@ -15,6 +15,8 @@ DataMapper.setup(:default, db_site_string)
 # Require Models here
 require "models/user"
 require "models/stop"
+require "models/solution"
+require "models/item_type"
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
