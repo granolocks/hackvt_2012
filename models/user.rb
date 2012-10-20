@@ -19,6 +19,7 @@ class User
   def initialize(*args)
     super
     self.current_stop = Stop.first
+    new_suggestions
   end
 
   # Activities the user has completed
@@ -50,8 +51,10 @@ class User
   end
 
   def new_suggestions
-    #item_types = current_stop.solutions.required_item_type
-    #activities = ActivityType.all(reward_type: item_types).activities
+    unless current_stop.solutions.empty?
+      item_types = current_stop.solutions.required_item_type
+      activities = ActivityType.all(reward_type: item_types).activities.all(:id.not => suggested_activities.unavailable.map(&:id)).limit(6)
+    end
   end
 
   def inventory
