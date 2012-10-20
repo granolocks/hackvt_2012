@@ -69,10 +69,12 @@ class User
   def new_suggestions
     unless current_stop.solutions.empty?
       item_types = current_stop.solutions.map(&:required_item_type_id)
-      acts = ActivityType.all(reward_type_id: item_types).activities.all(:id.not => (suggested_activities.not_interested | suggested_activities.complete)).all(limit: 10)
+      activity_types = ActivityType.all(reward_type_id: item_types).map(&:id)
+      excluded_activities = (suggested_activities.not_interested | suggested_activities.complete).map(&:id)
+      acts = Activity.all(:activity_type_id => activity_types, :id.not => excluded_activities).all(limit: 10)
 
       acts.map do |a|
-        SuggestedActivity.create({user: self, activity: a, suggested_at_stop: current_stop})
+        SuggestedActivity.create({user_id: self.id, activity_id: a.id, suggested_at_stop_id: current_stop.id})
       end
     end
   end
