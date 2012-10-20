@@ -13,5 +13,13 @@ class Activity
   property :longitude,    String
 
   belongs_to :activity_type
+
+  def self.geocoded
+    all(:latitude.not => nil, :longitude.not => nil)
+  end
+
+  def self.ungeocoded
+    all(latitude: nil) | all(longitude: nil)
+  end
 end
 
