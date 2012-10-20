@@ -11,12 +11,15 @@ class Wintermute < Sinatra::Base
 
       # Return the Entire Game Model
       get '/game/?' do
+        login_required
+
         game_state.to_json
       end
 
       # Tell the backend user has consumed an inventory item to advance
       # Returns updated game state model
       put '/inventory/:inventory_type/?' do
+        login_required
 
         current_user.complete_stop!(:inventory_type)
 
@@ -31,6 +34,7 @@ class Wintermute < Sinatra::Base
 
         # Mark activity as unwanted
         put '/reject/:activity_id/?' do
+          login_required
 
           current_user.reject_activity(params[:activity_id])
 
@@ -41,6 +45,7 @@ class Wintermute < Sinatra::Base
         # Mark activity as complete
         # Increment inventory
         put '/complete/:id/?' do
+          login_required
 
           # complete the activity
           current_user.complete_activity(params[:activity_id])
