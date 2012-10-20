@@ -31,6 +31,18 @@ class User
     suggested_activities.suggestions.activities
   end
 
+  def complete_activity(activity_id)
+    sa = suggested_activities.all(activity_id: activity_id).first
+    sa.completed = true
+    sa.save
+  end
+
+  def dislike_activity(activity_id)
+    sa = suggested_activities.all(activity_id: activity_id).first
+    sa.not_interested = true
+    sa.save
+  end
+
   def complete_stop!(item_type_name)
     it = current_stop.solutions.all(required_item_type: item_type_name).first
     possible_items = Item.all(item_type: it)
