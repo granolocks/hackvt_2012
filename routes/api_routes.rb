@@ -1,97 +1,66 @@
-
 class Wintermute < Sinatra::Base
-   namespace "/api" do
-     # We are going to return json(for (almost) everything.
-     before do
-       content_type "application/json"
-     end
 
-     namespace "/v1" do
+  namespace "/api" do
 
-       namespace '/stops' do
-          namespace '/:id' do
-             #TODO Make this happen
-             # @stop = Stop.get(params[:id])
+    # We are going to return json for everything in this area.
+    before do
+      content_type "application/json"
+    end
 
-             get '/?' do
+    namespace "/v1" do
 
-               # TODO
-               # @stop.response_body.to_json
-               { :stop => {
-                   :id => 2,
-                   :name => "Prospect Rock",
-                   :description => "You approach Prospect Rock. At the base of the rock you see a bear who seems to be threatening you."
-                 },
-                 :solutions => [
-                   {
-                     :description => "You can fight the bear.",
-                     :required_item => "Weapon"
-                   },
-                   {
-                     :description => "You can lure the bear away.",
-                     :required_item => "Food"
-                   },
-                ],
-                :inventory => {
-                   "Food" => 0,
-                   "Weapon" => 0,
-                   "Tool" => 1,
-                   "Towel" => 0,
-                   "Tent" => 0,
-                 }
-               }.to_json
-             end
+      # Return the Entire Game Model
+      get '/game/?' do
+        game_state.to_json
+      end
 
-             get '/activities/?' do
-               # TODO Get these hashes based on the stop requirements
-               {
-                 :activities => [
-                   {
-                     :id => 1,
-                     :name => "This Is my Activity",
-                     :description => "This is a thing you can do.",
-                     :address => "123 shitbox lane",
-                     :website => "http://doshit.com",
-                     :latitude => "44.476268",
-                     :longitude => "-73.209329",
-                     :item_type => "Weapon"
-                   },
-                   {
-                     :id => 2,
-                     :name => "This Is my Activity",
-                     :description => "This is a thing you can do.",
-                     :address => "123 shitbox lane",
-                     :website => "http://doshit.com",
-                     :latitude => "44.476268",
-                     :longitude => "-73.209329",
-                     :item_type => "Weapon"
-                   },
-                   {
-                     :id => 3,
-                     :name => "This Is my Activity",
-                     :description => "This is a thing you can do.",
-                     :address => "123 shitbox lane",
-                     :website => "http://doshit.com",
-                     :latitude => "44.476268",
-                     :longitude => "-73.209329",
-                     :item_type => "Food"
-                   },
-                   {
-                     :id => 4,
-                     :name => "This Is my Activity",
-                     :description => "This is a thing you can do.",
-                     :address => "123 shitbox lane",
-                     :website => "http://doshit.com",
-                     :latitude => "44.476268",
-                     :longitude => "-73.209329",
-                     :item_type => "Food"
-                   }
-                 ]
-               }.to_json
-             end
-          end
-       end
-     end
-   end
+      # Tell the backend user has consumed an inventory item to advance
+      # Returns updated game state model
+      put '/inventory/:inventory_type/?' do
+
+        current_user.complete_stop!(:inventory_type)
+
+        # Return Game State
+        game_state.to_json
+      end
+
+      # Tell the backend that the user has taken an action on the given acitvity
+      # Possible actions include ‘complete’ or ‘reject’
+      # Returns an updated game state model
+      namespace '/activity' do
+
+        # Mark activity as unwanted
+        put '/reject/:activity_id/?' do
+
+          current_user.reject_activity(params[:activity_id])
+
+          # Return Game State
+          game_state.to_json
+        end
+
+        # Mark activity as complete
+        # Increment inventory
+        put '/complete/:id/?' do
+
+          # complete the activity
+          current_user.complete_activity(params[:activity_id])
+
+          # Return Game State
+          game_state.to_json
+        end
+
+      end
+
+      private
+      def game_state
+        {
+          stop: current_user.current_stop,
+          solutions: current_user.current_stop.solutions,
+          inventory: current_user.inventory_counts,
+          activities: current_user.suggestions
+        }
+      end
+    end
+  end
 end
 
