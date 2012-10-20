@@ -36,7 +36,7 @@ class User
     sa.completed = true
     sa.save
 
-    self.items << Item.all(item_type: sa.activity.activity_type.reward_type).sample(1).first
+    self.items << Item.all(item_type_id: sa.activity.activity_type.reward_type.id).sample(1).first
 
     save
   end
@@ -48,7 +48,7 @@ class User
   end
 
   def complete_stop!(item_type_name)
-    it = self.current_stop.solutions.all(required_item_type: ItemType.all(name: item_type_name)).first
+    it = self.current_stop.solutions.all(required_item_type_id: ItemType.all(name: item_type_name).map(&:id)).first
     possible_items = Item.all(item_type: it.required_item_type)
     used_item = self.inventory.all(id: possible_items.map(&:id) ).first
 
