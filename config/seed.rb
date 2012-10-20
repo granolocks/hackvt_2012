@@ -1,9 +1,4 @@
 
-User.first_or_create({username: 'admin'}, {
-  password: 'admin',
-  password_confirmation: 'admin'
-})
-
 item_types = [
   { name: "food" },
   { name: "weapon" },
@@ -28,3 +23,10 @@ stops = [
 stops.each do |s|
   Stop.first_or_create({name: s[:name]}, s)
 end
+
+# This always needs to be after the stops have been added
+User.first_or_create({username: 'admin'}, {
+  password: 'admin',
+  password_confirmation: 'admin'
+})
+

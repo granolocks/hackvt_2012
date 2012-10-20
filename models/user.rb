@@ -16,9 +16,9 @@ class User
   # Not required becuase the getter is overridden to default to the first step
   belongs_to :current_stop, 'Stop', required: false
 
-  # Returns the current stop or the first one if one hasn't been set
-  def current_stop
-    attribute_get(:current_stop) || Stop.first
+  def initialize(*args)
+    super
+    self.current_stop = Stop.first
   end
 
   # Activities the user has completed
