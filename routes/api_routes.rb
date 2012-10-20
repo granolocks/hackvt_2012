@@ -16,9 +16,9 @@ class Wintermute < Sinatra::Base
 
       # Tell the backend user has consumed an inventory item to advance
       # Returns updated game state model
-      put '/inventory/?' do
+      put '/inventory/:inventory_type/?' do
 
-        current_user.complete_stop!(params[:solution_id])
+        current_user.complete_stop!(:inventory_type)
 
         # Return Game State
         game_state.to_json
@@ -27,7 +27,7 @@ class Wintermute < Sinatra::Base
       # Tell the backend that the user has taken an action on the given acitvity
       # Possible actions include ‘complete’ or ‘reject’
       # Returns an updated game state model
-      namepspace '/activity' do
+      namespace '/activity' do
 
         # Mark activity as unwanted
         put '/reject/:activity_id/?' do
@@ -56,7 +56,7 @@ class Wintermute < Sinatra::Base
         {
           stop: current_user.current_stop,
           solutions: current_user.current_stop.solutions,
-          inventory: current_user.inventory,
+          inventory: current_user.inventory_counts,
           activities: current_user.suggestions
         }
       end
